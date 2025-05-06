@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+    <p>... тут список принтеров ... </p>
+
+    <ul>
+    {% for printer in printers %}
+        <li>
+            <a href="{% url "cartriges:printers" printer.pk %}">{{printer.name}}</a>
+        </li>
+    {% endfor %}
+    </ul>
+{% endblock content %}

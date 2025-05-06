@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+    <p>{{printer.name}}</p>
+    <p>{{printer.amount}}</p>
+    <br>
+
+    <p>Совместимые расхрдники:</p>
+    <ul> 
+        {% for cartrige in cartriges %}
+            <li>
+                <a href="#">{{cartrige.name}} = {{cartrige.amount}} шт.</a>
+            </li>
+        {% endfor %}
+    </ul>    
+{% endblock content %}

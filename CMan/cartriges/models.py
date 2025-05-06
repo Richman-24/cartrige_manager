@@ -33,7 +33,7 @@ class Cartrige(models.Model):
         default_related_name = "cartriges"
         verbose_name = "картридж"
         verbose_name_plural = "картриджи"
-        ordering = ("name",)
+        ordering = ("category", "name",)
     
     def __str__(self):
         return f"{self.name} | {self.amount} - {self.category}"
