@@ -2,6 +2,7 @@
 
 
 {% block content %}
+<p>... тут информация по виду принтеров ... </p>
     <p>{{printer.name}}</p>
     <p>{{printer.amount}}</p>
     <br>
@@ -10,7 +11,9 @@
     <ul> 
         {% for cartrige in cartriges %}
             <li>
-                <a href="#">{{cartrige.name}} = {{cartrige.amount}} шт.</a>
+                <a href="{% url "cartriges:detail" cartrige.slug %}">
+                    {{cartrige.name}} = {{cartrige.amount}} шт.
+                </a>
             </li>
         {% endfor %}
     </ul>    

@@ -1,13 +1,14 @@
 from django.urls import path
 
-from cartriges.views import CartrigesListView, CartrigeDetailView
+from devices.views import PrinterDetailView, PrinterListView
 
-app_name="cartriges"
+app_name="devices"
 
 
 urlpatterns = [
-    path('', CartrigesListView.as_view(), name="index"),
-    path('<slug:cartrige_slug>/', CartrigeDetailView.as_view(), name="detail"),
+
+    path('', PrinterListView.as_view(), name="printers"),
+    path('<int:printer_pk>', PrinterDetailView.as_view(), name="printer"),
     #тут будет ссылка на принтер по inv_number
     #path('usable-printers/<int:inv_number>', UsablePrinterDetailView.as_view(), name="usable-printers"),
 ]

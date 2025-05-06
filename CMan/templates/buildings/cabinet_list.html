@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+    <p>... тут список кабинетов в виде таблицы ... </p>
+
+    {% for cabinet in cabinets %}
+        <li>
+            <a href="#">{{cabinet.name}}</a>
+        </li>
+    {% endfor %}
+
+{% endblock content %}

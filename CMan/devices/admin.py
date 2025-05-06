@@ -1,3 +1,7 @@
 from django.contrib import admin
 
-# Register your models here.
+from devices.models import Printer, UsablePrinter
+
+
+admin.site.register(Printer)
+admin.site.register(UsablePrinter)

@@ -7,7 +7,7 @@
     <ul>
     {% for printer in printers %}
         <li>
-            <a href="{% url "cartriges:printers" printer.pk %}">{{printer.name}}</a>
+            <a href="{% url "devices:printer" printer.pk %}">{{printer.name}}</a>
         </li>
     {% endfor %}
     </ul>

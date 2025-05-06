@@ -19,7 +19,7 @@ GET - <slug:building_slug>/campus/<slug:cabinet_slug>/
 
 ## Сервис: 
 1. Заменить расходник устройства 
-GET - printers/change_equip/
+POST - printers/change_equip/
     - Наименования устройства; 
     - инв_номер устройства (ссылка); 
     - номер кабинета устройства; 
@@ -52,7 +52,7 @@ GET - <slug:building_slug>/devices/<int:inv_number>/ (to UsablePrinter)
     - [кнопка активности] изменить статус:
 
 4. Изменить расположение устройства 
-GET - <slug:building_slug>/devices/change_place/
+POST - <slug:building_slug>/devices/change_place/
     - Наименование устройства; 
     - инв_номер устройства (ссылка); 
     - кабинет откуда переместить;
