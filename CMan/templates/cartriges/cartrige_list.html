@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+    <p>... тут список картриджей в виде таблицы ... </p>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>№</th>
+                <th>Модель</th>
+                <th>Количество</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cartrige in cartriges %}
+                <tr>
+                    <td>{{cartrige.id}}</td>
+                    <td><a href="{% url "cartriges:detail" cartrige.slug %}">{{cartrige.name}}</a></td>
+                    <td>{{cartrige.amount}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock content %}

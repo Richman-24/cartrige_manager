@@ -1,3 +1,6 @@
 from django.contrib import admin
 
-# Register your models here.
+from cartriges.models import Cartrige, Printer
+
+admin.site.register(Cartrige)
+admin.site.register(Printer)

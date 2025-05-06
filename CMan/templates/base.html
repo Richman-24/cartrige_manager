@@ -1,0 +1,22 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Менеджер катриджей</title>
+</head>
+<body>
+    <nav>
+        <a href="{% url "cartriges:index" %}">Главная</a>
+        <a href="{% url "cartriges:index" %}">Расходники</a>
+        <a href="#">Площадка</a>
+        <a href="#">Оборудование</a>
+        <a href="#">Аналитика</a>
+    </nav>
+    {% block content %}
+    
+    {% endblock content %}
+</body>
+</html>

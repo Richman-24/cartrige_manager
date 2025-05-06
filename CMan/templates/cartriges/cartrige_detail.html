@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+    <p>{{cartrige.name}}</p>
+    <p>{{cartrige.amount}}</p>
+    <br>
+
+    <p>Совместимые принтеры:</p>
+    <ul> 
+        {% for printer in printers %}
+            <li>
+                <a href="#">{{printer.name}}</a>
+            </li>
+        {% endfor %}
+    </ul>    
+{% endblock content %}
