@@ -19,7 +19,7 @@ GET - <slug:building_slug>/campus/<slug:cabinet_slug>/
 
 ## Сервис: 
 1. Заменить расходник устройства 
-GET - <slug:building_slug>/devices/change_equip/
+GET - printers/change_equip/
     - Наименования устройства; 
     - инв_номер устройства (ссылка); 
     - номер кабинета устройства; 
