@@ -12,9 +12,4 @@ urlpatterns = [
     path('printers/<int:printer_pk>', PrinterDetailView.as_view(), name="printers"),
     #тут будет ссылка на принтер по inv_number
     #path('usable-printers/<int:inv_number>', UsablePrinterDetailView.as_view(), name="usable-printers"),
-
-
-    
-
-
 ]

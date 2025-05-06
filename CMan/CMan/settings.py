@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'buildings',
     'cartriges',
     'devices',
+    'supports',
 ]
 
 MIDDLEWARE = [

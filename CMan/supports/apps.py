@@ -1,7 +1,6 @@
 from django.apps import AppConfig
 
 
-class BuildingsConfig(AppConfig):
+class SupportsConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'buildings'
-    verbose_name="Площадка"
+    name = 'supports'

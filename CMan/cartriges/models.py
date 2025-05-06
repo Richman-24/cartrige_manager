@@ -1,5 +1,7 @@
 from django.db import models
 
+from buildings.models import Cabinet
+
 
 
 class Printer(models.Model):
@@ -15,8 +17,30 @@ class Printer(models.Model):
         return self.name
 
 
-class Cartrige(models.Model):
+class UsablePrinters(models.Model):
+    PRINTER_STATUS = {
+        "working": "Исправен",
+        "broken": "Сломан",
+    }
+    
+    cabinet = models.ForeignKey(to=Cabinet, on_delete=models.PROTECT, verbose_name="кабинет")
+    printer = models.ForeignKey(to=Printer, on_delete=models.PROTECT, verbose_name="принтер")
+    inv_number = models.PositiveSmallIntegerField(unique=True, verbose_name="инвентаризационный номер")
+    # serial_number = models.CharField(max_length=30, verbose_name="серийный номер")
+    status = models.CharField(max_length=8, choices=PRINTER_STATUS, verbose_name="Состояние")
+    comment = models.TextField(max_length=256, blank=True,  null=True, verbose_name="комментарий")
 
+    class Meta:
+        db_table="usable_printers"
+        default_related_name="usable_printers"
+        verbose_name="используемый принтер"
+        verbose_name_plural="используемые принтеры"
+        ordering=("cabinet__name",)
+
+    def __str__(self):
+        return f"{self.cabinet.name} | {self.printer.name} | {self.inv_number} "
+
+class Cartrige(models.Model):
     CATEGORY_CHOICE = {
         "cartrige":"Картридж",
         "drum":"Барабан",
