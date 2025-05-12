@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+    <p>... тут список всех устройств в этом кабинете ... </p>
+
+    <ul>
+    {% if devices %}
+        {% for device in devices %}
+        <li>
+            {{device.printer.name}} -
+            {{device.inv_number}} -
+            {{device.status}} 
+            
+            {% if device.ip_adress %}
+            - {{device.ip_adress}}
+            {% endif %}
+            
+            {% if device.host_name %}
+            - {{device.host_name}}
+            {% endif %}
+        </li>        
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>устройств не обнаружено</p>
+    {% endif %}
+
+{% endblock content %}

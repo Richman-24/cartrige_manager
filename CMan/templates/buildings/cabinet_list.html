@@ -6,7 +6,7 @@
 
     {% for cabinet in cabinets %}
         <li>
-            <a href="#">{{cabinet.name}}</a>
+            <a href="{% url "campus:cabinet" cabinet.pk%}">{{cabinet.name}}</a>
         </li>
     {% endfor %}
 
