@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+    <p>... тут список всех операций с расходниками в виде таблицы ... </p>
+
+    {% for operation in operations %}
+        <li>
+            {{operation}}
+        </li>
+    {% endfor %}
+
+{% endblock content %}

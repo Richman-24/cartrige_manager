@@ -6,6 +6,6 @@ urlpatterns = [
     path('campus/', include("buildings.urls", namespace="campus")),
     path('cartriges/', include("cartriges.urls", namespace="cartriges")),
     path('devices/', include("devices.urls", namespace="devices")),
-    #path('support/', include("supports.urls", namespace="support")),
-    path('', include("cartriges.urls", namespace="cartriges")),
+    path('operations/', include("operations.urls", namespace="operations")),
+    path('', include("cartriges.urls")), # Временное решение, переадресация пока нет "главной"
 ]
