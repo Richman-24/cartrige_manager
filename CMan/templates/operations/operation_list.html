@@ -7,6 +7,7 @@
     {% for operation in operations %}
         <li>
             {{operation}}
+            <a href="{% url "operations:remove" operation.pk %}"><button> удалить </button></a>
         </li>
     {% endfor %}
 

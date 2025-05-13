@@ -1,9 +1,10 @@
 from django.db import transaction
 from django.urls import reverse_lazy
 from django.views.generic import ListView, FormView
+from django.views.generic.edit import DeleteView
 
 from operations.models import Operation
-from operations.forms import OperationAddForm
+from operations.forms import OperationForm
 
 
 class OperationsListView(ListView):
@@ -15,20 +16,15 @@ class OperationsListView(ListView):
 
 class OperationsAddView(FormView):
     model = Operation
-    form_class = OperationAddForm
+    form_class = OperationForm
     template_name = "operations/operation_add.html" 
     success_url = reverse_lazy("operations:index")
 
     def form_valid(self, form):
-        # Начинаем атомарную транзакцию
         with transaction.atomic():
-            # Сохраняем объект операции
-            operation = form.save()
-            
-            # Получаем выбранный картридж из формы
+            form.save()
             selected_cartrige = form.cleaned_data['item']
-            
-            # Уменьшаем количество картриджа на 1
+
             if selected_cartrige.amount > 0:
                 selected_cartrige.amount -= 1
                 selected_cartrige.save()
@@ -38,6 +34,21 @@ class OperationsAddView(FormView):
 
         return super().form_valid(form)
 
-class OperationsEditView(FormView): ...
 
-class OperationsRemoveView(FormView): ...
+class OperationsRemoveView(DeleteView):
+    model = Operation
+    pk_url_kwarg = "operation_id"
+    context_object_name = "operation"
+    success_url = reverse_lazy("operations:index")
+    
+    def post(self, request, *args, **kwargs):
+        
+        operation = self.get_object()
+
+        with transaction.atomic():
+            selected_cartrige = operation.item
+            selected_cartrige.amount += 1
+            selected_cartrige.save()
+
+            operation.delete()
+        return super().delete(request, *args, **kwargs)

@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h2>Подтверждение удаления операции</h2>
+  <p>Вы уверены, что хотите удалить операцию "{{operation.created_at}} - {{ operation.printer }} - {{ operation.item.name }}"?</p>
+
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit">Удалить</button>
+    <a href="{% url 'operations:index' %}">Отмена</a>
+  </form>
+{% endblock %}
