@@ -1,4 +1,5 @@
 from django.db import transaction
+from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.views.generic import ListView, FormView
 from django.views.generic.edit import DeleteView
@@ -42,7 +43,6 @@ class OperationsRemoveView(DeleteView):
     success_url = reverse_lazy("operations:index")
     
     def post(self, request, *args, **kwargs):
-        
         operation = self.get_object()
 
         with transaction.atomic():
@@ -51,4 +51,4 @@ class OperationsRemoveView(DeleteView):
             selected_cartrige.save()
 
             operation.delete()
-        return super().delete(request, *args, **kwargs)
+        return HttpResponseRedirect(self.success_url)

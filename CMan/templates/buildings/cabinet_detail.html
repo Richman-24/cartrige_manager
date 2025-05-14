@@ -7,7 +7,7 @@
     <ul>
     {% if devices %}
         {% for device in devices %}
-        <li>
+        <li><a href={% url "devices:printer" device.pk %}>
             {{device.printer.name}} -
             {{device.inv_number}} -
             {{device.status}} 
@@ -19,7 +19,8 @@
             {% if device.host_name %}
             - {{device.host_name}}
             {% endif %}
-        </li>        
+            
+        </a></li>        
         {% endfor %}
     </ul>
     {% else %}

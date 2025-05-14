@@ -6,8 +6,18 @@
     <p>{{printer.name}}</p>
     <p>{{printer.amount}}</p>
     <br>
-
-    <p>Совместимые расхрдники:</p>
+        <p>Используемые принтеры этой модели:</p>
+    <ul> 
+        {% for device in devices %}
+            <li>
+                <a href="{% url "devices:usable_printers" device.inv_number %}">
+                    кабинет: {{device.cabinet.name}} устройство: {{device.inv_number}} - {{device.status}}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>    
+    
+    <p>Совместимые расходники:</p>
     <ul> 
         {% for cartrige in cartriges %}
             <li>

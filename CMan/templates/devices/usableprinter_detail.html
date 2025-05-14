@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+    <p>... тут информация по конкретному принтеру ... </p>
+    <p>### Это должна быть интерактивная форма, чтобы можно было управлять данными ###</p>
+<br>   
+    <p>Принтер: {{device.printer.name}} 
+        {% if device.serial_number %}
+        - cерийный номер {{device.serial_number}}
+        {% endif %}
+    </p>
+    <p>Кабинет: {{device.cabinet.name}}</p>
+    <p>Инвентаризационный номер: {{device.inv_number}}</p>
+    <p>Состояние: {{device.status}}</p>
+
+<br>
+    <p>Сетевые настройки:</p>
+    <p>{% if device.ip_adress %}IP: {{device.ip_adress}}{% endif %}</p>
+    <p>{% if device.host_name %}HOST: {{device.host_name}}{% endif %}</p>
+    <br>
+    <p>{% if device.comment %}Комментарий: {{device.comment}}{% endif %}</p>
+    <br>
+
+    <p>Совместимые расходники:</p>
+    <ul> 
+        {% for cartrige in cartriges %}
+            <li>
+                <a href="{% url "cartriges:detail" cartrige.slug %}">
+                    {{cartrige.name}} = {{cartrige.amount}} шт.
+                </a>
+            </li>
+        {% endfor %}
+    </ul>    
+
+    
+{% endblock content %}

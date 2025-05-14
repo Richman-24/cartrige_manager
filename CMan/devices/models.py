@@ -5,7 +5,7 @@ from buildings.models import Cabinet
 
 class Printer(models.Model):
     name = models.CharField(max_length=256, unique=True, verbose_name="Модель")
-
+    
     class Meta:
         db_table = "printers"
         verbose_name = "принтер"
