@@ -3,11 +3,11 @@
 
 {% block content %}
     <p>... тут список всех устройств в этом кабинете ... </p>
-
+    <h2> Кабинет № {{object.name}}</h2>
     <ul>
     {% if devices %}
         {% for device in devices %}
-        <li><a href={% url "devices:printer" device.pk %}>
+        <li><a href={% url "devices:usable_printers" device.inv_number %}>
             {{device.printer.name}} -
             {{device.inv_number}} -
             {{device.status}} 

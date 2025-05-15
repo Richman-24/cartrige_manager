@@ -14,10 +14,11 @@ class CampusCabinetView(DetailView):
     model = Cabinet
     template_name = "buildings/cabinet_detail.html"
     pk_url_kwarg = "cabinet_pk"
-    context_object_name = "devices"
+    context_object_name = "cabinet"
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+
         cabinet_pk = self.kwargs.get(self.pk_url_kwarg)
         context["devices"] = (
             UsablePrinter.objects.select_related()

@@ -5,33 +5,48 @@
     <p>... тут информация по конкретному принтеру ... </p>
     <p>### Это должна быть интерактивная форма, чтобы можно было управлять данными ###</p>
 <br>   
-    <p>Принтер: {{device.printer.name}} 
+    <h2>{{device.printer.name}} 
         {% if device.serial_number %}
         - cерийный номер {{device.serial_number}}
         {% endif %}
-    </p>
-    <p>Кабинет: {{device.cabinet.name}}</p>
+    </h2>
+    <p>Кабинет: <a href="{% url "campus:cabinet" device.cabinet.pk %}" >{{device.cabinet.name}}</a></p>
     <p>Инвентаризационный номер: {{device.inv_number}}</p>
     <p>Состояние: {{device.status}}</p>
 
 <br>
-    <p>Сетевые настройки:</p>
-    <p>{% if device.ip_adress %}IP: {{device.ip_adress}}{% endif %}</p>
-    <p>{% if device.host_name %}HOST: {{device.host_name}}{% endif %}</p>
-    <br>
-    <p>{% if device.comment %}Комментарий: {{device.comment}}{% endif %}</p>
-    <br>
+    <p>Состояние расходников:<br>
+        Тонер: 89% |
+        Барабан: 77%
+    </p>
 
-    <p>Совместимые расходники:</p>
-    <ul> 
-        {% for cartrige in cartriges %}
+<br>
+    <p>Сетевые настройки:<br>
+    {% if device.ip_adress %}IP: {{device.ip_adress}}<br>{% endif %}
+    {% if device.host_name %}HOST: {{device.host_name}}<br>{% endif %}
+    <br>
+    {% if device.comment %}Комментарий: {{device.comment}}{% endif %}</p>
+    <br>
+    <div>
+        <a href="{% url "devices:usable_printers_edit" device.inv_number %}">
+            <button>Изменить</button>
+        </a>
+        <a href="{% url "operations:add_from_device" device.inv_number%}">
+            <button>Заменить расходники</button>
+        </a>
+    </div>
+
+    <p>Совместимые расходники:
+        <ul> 
+            {% for cartrige in cartriges %}
             <li>
                 <a href="{% url "cartriges:detail" cartrige.slug %}">
                     {{cartrige.name}} = {{cartrige.amount}} шт.
                 </a>
             </li>
-        {% endfor %}
-    </ul>    
-
+            {% endfor %}
+        </ul>    
+    </p>
+        
     
 {% endblock content %}

@@ -1,4 +1,5 @@
-from django.views.generic import ListView, DetailView
+from django.urls import reverse_lazy
+from django.views.generic import ListView, DetailView, UpdateView
 
 from cartriges.models import Printer
 from devices.models import UsablePrinter
@@ -24,7 +25,6 @@ class PrinterDetailView(DetailView): # передумать, переделат�
         return context
 
 
-
 class UsablePrinterDetailView(DetailView):
     context_object_name = "device"
     pk_url_kwarg = "inv_number"
@@ -38,3 +38,9 @@ class UsablePrinterDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         context['cartriges'] = self.get_object().printer.cartriges.all()
         return context
+
+
+class UsablePrinterEditView(UpdateView):
+    model = UsablePrinter
+    fields = '__all__'
+    success_url = reverse_lazy("devices:usable_printers")

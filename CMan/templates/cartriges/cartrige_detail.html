@@ -3,18 +3,18 @@
 
 {% block content %}
 <p>... тут информация по конкретному картриджу ... </p>
-    <p>{{cartrige.name}}</p>
-    <p>{{cartrige.amount}}</p>
+    <p>{{cartrige.name}} - {{cartrige.amount}} шт. </p>
     <br>
 
-    <p>Совместимые принтеры:</p>
-    <p>Используемые (по-умолчанию) | Все</p>
+    <p>Совместимые принтеры:<br>
+    Используемые на площадке (по-умолчанию) | в организации | все</p>
 
+    
     <ul> 
         {% for printer in printers %}
             <li>
                 <a href="{% url "devices:printer" printer.pk %}">{{printer.name}}</a>
             </li>
         {% endfor %}
-    </ul>    
+    </ul>
 {% endblock content %}
