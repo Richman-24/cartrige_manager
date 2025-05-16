@@ -27,7 +27,7 @@ INSTALLED_APPS = [
 
     'debug_toolbar',
 
-    'buildings',
+    'campus',
     'cartriges',
     'devices',
     'operations',

@@ -1,20 +1,20 @@
 [
     {
-        "model": "buildings.cabinet",
+        "model": "campus.cabinet",
         "pk": 1,
         "fields": {
             "name": "111"
         }
     },
     {
-        "model": "buildings.cabinet",
+        "model": "campus.cabinet",
         "pk": 2,
         "fields": {
             "name": "212"
         }
     },
     {
-        "model": "buildings.cabinet",
+        "model": "campus.cabinet",
         "pk": 3,
         "fields": {
             "name": "101"

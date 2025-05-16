@@ -9,7 +9,7 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('buildings', '0001_initial'),
+        ('campus', '0001_initial'),
     ]
 
     operations = [
@@ -36,7 +36,7 @@ class Migration(migrations.Migration):
                 ('comment', models.TextField(blank=True, max_length=256, null=True, verbose_name='комментарий')),
                 ('ip_adress', models.CharField(blank=True, max_length=15, null=True, unique=True, verbose_name='IP адрес устройства')),
                 ('host_name', models.CharField(blank=True, max_length=10, null=True, verbose_name='Имя хоста в сети')),
-                ('cabinet', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='buildings.cabinet', verbose_name='кабинет')),
+                ('cabinet', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='campus.cabinet', verbose_name='кабинет')),
                 ('printer', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='devices.printer', verbose_name='принтер')),
             ],
             options={

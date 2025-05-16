@@ -1,6 +1,6 @@
 from django.db import models
 
-from buildings.models import Cabinet
+from campus.models import Cabinet
 
 
 class Printer(models.Model):

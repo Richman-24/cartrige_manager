@@ -8,7 +8,7 @@ app_name="devices"
 urlpatterns = [
 
     path('', PrinterListView.as_view(), name="printers"),
-    path('<int:printer_pk>', PrinterDetailView.as_view(), name="printer"),
+    path('<int:printer_pk>', PrinterDetailView.as_view(), name="printer"), # на удаление вместе с вьюшкой
     path('use/<int:inv_number>/', UsablePrinterDetailView.as_view(), name="usable_printers"),
     path('use/<int:inv_number>/edit/', UsablePrinterEditView.as_view(), name="usable_printers_edit"),
 ]

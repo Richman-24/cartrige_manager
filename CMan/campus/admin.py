@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from buildings.models import Cabinet
+from campus.models import Cabinet
 
 
 admin.site.register(Cabinet)

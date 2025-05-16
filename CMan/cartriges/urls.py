@@ -8,6 +8,4 @@ app_name="cartriges"
 urlpatterns = [
     path('', CartrigesListView.as_view(), name="index"),
     path('<slug:cartrige_slug>/', CartrigeDetailView.as_view(), name="detail"),
-    #тут будет ссылка на принтер по inv_number
-    #path('usable-printers/<int:inv_number>', UsablePrinterDetailView.as_view(), name="usable-printers"),
-]
+    ]

@@ -1,7 +1,7 @@
 from django.http import Http404
 from django.views.generic import ListView, DetailView
 
-from buildings.models import Cabinet
+from campus.models import Cabinet
 from devices.models import UsablePrinter
 
 
@@ -12,7 +12,7 @@ class CampusListView(ListView):
 
 class CampusCabinetView(DetailView):
     model = Cabinet
-    template_name = "buildings/cabinet_detail.html"
+    template_name = "campus/cabinet_detail.html"
     pk_url_kwarg = "cabinet_pk"
     context_object_name = "cabinet"
     

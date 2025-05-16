@@ -1,6 +1,6 @@
 from django.urls import path
 
-from buildings.views import CampusListView, CampusCabinetView
+from campus.views import CampusListView, CampusCabinetView
 
 app_name="campus"
 
