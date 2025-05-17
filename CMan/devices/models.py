@@ -37,7 +37,7 @@ class UsablePrinter(models.Model):
         default_related_name="usable_printers"
         verbose_name="используемый принтер"
         verbose_name_plural="используемые принтеры"
-        ordering=("cabinet__name",)
+        ordering=("-status", "cabinet__name",)
 
     def __str__(self):
         return f"{self.cabinet.name} | {self.printer.name} | {self.inv_number} "

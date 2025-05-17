@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+    <p>... тут список принтеров ... </p>
+
+    <ul>
+    {% for printer in printers %}
+        <li>
+            <a href="{% url "devices:usable_printers" printer.inv_number %}">
+                кабинет: {{printer.cabinet.name}} 
+                устройство: {{printer.inv_number}} 
+                - {{printer.status}}
+            </a>
+        </li>
+    {% endfor %}
+    </ul>
+{% endblock content %}
